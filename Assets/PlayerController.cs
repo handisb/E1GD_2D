@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coin"))
         {
-            jumpSpeed *= 3f;
+            jumpSpeed = (score+2) * 5000f;
             score++;
         }
     }
