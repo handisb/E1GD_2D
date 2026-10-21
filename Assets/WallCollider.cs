@@ -16,14 +16,14 @@ public class WallCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             GetComponentInParent<PlayerController>().onWall = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             GetComponentInParent<PlayerController>().onWall = false;
         }

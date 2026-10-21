@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(movementX * speed * Time.fixedDeltaTime, rb.linearVelocityY);
         if (onFloor && movementY > 0)
         {
+            /*if (onWall)
+            {
+                rb.AddForceX(-10 * speed * Time.fixedDeltaTime);
+            }*/
             animator.SetBool("walljumping", onFloor && onWall);
             rb.AddForceY(jumpSpeed * movementY * Time.fixedDeltaTime);
             onFloor = false;
@@ -57,6 +61,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            onFloor = true;
+        }
         if (collision.gameObject.CompareTag("Coin"))
         {
             jumpSpeed *= 3f;
