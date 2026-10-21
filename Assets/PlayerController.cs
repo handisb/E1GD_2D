@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     float jumpSpeed = 5000;
     int score = 0;
     bool onFloor = false;
+    public bool onWall = false;
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer sr;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(movementX * speed * Time.fixedDeltaTime, rb.linearVelocityY);
         if (onFloor && movementY > 0)
         {
+            animator.SetBool("walljumping", onFloor && onWall);
             rb.AddForceY(jumpSpeed * movementY * Time.fixedDeltaTime);
             onFloor = false;
         }
